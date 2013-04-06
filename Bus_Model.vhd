@@ -27,12 +27,12 @@ end entity Bus_Model;
 
 architecture behave of Bus_Model is 
 begin 
-	Bus_Proc : process
+	Bus_Proc : process (Addr, IHC)
 	begin
 		if(IHC = "1") then
 			IHC_Out <= IHC;
 			Data_Out <= Data_In after 10 ns;
 		end if;
-	wait;
 	end process Bus_Proc;
+	
 end architecture behave;

@@ -10,12 +10,16 @@ use ieee.std_logic_1164.all;
 use IEEE.NUMERIC_STD.all;
 
 entity Memory is
-   port (Addr : in std_logic_vector(31 downto 0); 	--32-bit Address between 0x0-0x3FF
-		 IC_Flag : in std_logic_vector(0 downto 0); -- 1 bit ICache Flag Input (1 for hit, 0 for miss, given by testbecnh)
-	     DC_Flag : in std_logic_vector(0 downto 0); -- 1 bit DCache Flag Input (1 for hit, 0 for miss)
-		 R_W : in std_logic_vector(0 downto 0); 	--1 for read, 0 for write
+   port (Addr : in std_logic_vector; 			--32-bit Address between 0x0-0x3FF
+		 IHC : in std_logic_vector(0 downto 0); -- 1 bit ICache Flag Input (1 for hit, 0 for miss, given by testbecnh)
+	     DHC : in std_logic_vector(0 downto 0); -- 1 bit DCache Flag Input (1 for hit, 0 for miss)
+		 R_W : in std_logic_vector(0 downto 0); 	--1 for read(Load), 0 for write(store)
 		 Data_In : in std_logic_vector(31 downto 0);-- Data input used in SW Instruction
+		 C_type : in std_logic_vector(0 downto 0); --1 for Data cache access, 0 for Instruction cache access
 		 
+		 LW_Done : out std_logic_vector(0 downto 0);
+		 SW_Done : out std_logic_vector(0 downto 0);
+		 	 
 		Data_Out: out std_logic_vector(31 downto 0);	--data output of 32-bit memory
 		Blk_Out: out std_logic_vector(255 downto 0));	--Block size of 8 words
 		 
@@ -30,6 +34,7 @@ architecture behave of Memory is
 	signal memory : array_type := ((others => (others=>'0')));	--Initialize everything to 0
 	shared variable mem_blk : natural;
 	
+	signal temp_blk_out: std_logic_vector(255 downto 0);
 	
 	--Instruion Positions (addr of the instructions):
 	constant lw_addr : integer := 0;
@@ -39,29 +44,31 @@ architecture behave of Memory is
 	constant bne_addr : integer := 16;
 	constant lui_addr : integer := 20;
 	
-	--Constants
-	constant cycle_time : integer := 10;
-	constant read_access : integer := cycle_time * 5;
-	constant write_access : integer := cycle_time * 3;
-	constant read_add : integer := cycle_time * 3;
-	constant write_add : integer := cycle_time * 4;
+	--Data Positions (DAddr)
+	
+	
+	constant cycle_time : time := 1 ns;
+	--Access times all cycles/word
+	constant read_access : integer :=  5;
+	constant write_access : integer := 3;
+	constant read_add : integer := 3;
+	constant write_add : integer := 4;
 	
 begin 
-	mem_proc : process (Addr)
-	begin
-		mem_blk := to_integer(unsigned(Addr)); 
 
-		if (DC_Flag = "0" and R_W = "0") then
-			--SW Dcache miss + Write signal
-			memory(mem_blk) <= Data_In(31 downto 24);
-			memory(mem_blk+1) <= Data_In(23 downto 16);
-			memory(mem_blk+2) <= Data_In(15 downto 8);
-			memory(mem_blk+3) <= Data_In(7 downto 0);
-		end if;
-		
-		if ((IC_Flag = "0" or DC_Flag = "0") and R_W = "1") then
-			--LW ICache miss or Dcache miss + Read signal
-			--Data_Out <= memory(mem_blk) & memory(mem_blk + 1) & memory(mem_blk + 2) & memory(mem_blk + 3);
+	mem_proc : process (Addr, IHC, DHC, R_W, Data_In, C_type)
+	
+	begin
+		mem_blk := to_integer(unsigned(Addr));
+		--I-Cahce Hit -> Write Thru (Write single word to memory)
+		if (IHC = "1" and C_type /= "1") then
+			memory(mem_blk) <= Data_In(31 downto 24) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+1) <= Data_In(23 downto 16) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+2) <= Data_In(15 downto 8) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+3) <= Data_In(7 downto 0) after (cycle_time * write_access) + (cycle_time * write_add);
+		--I-Cache Miss -> Write Allocate (Writes block to cache)
+		elsif (IHC = "0" and C_type /= "1") then
+			--Init of fake instruction memory
 			memory(lw_addr) <= x"8D";
 			memory(lw_addr+1) <= x"71";
 			memory(lw_addr+2) <= x"00";
@@ -91,20 +98,63 @@ begin
 			memory(lui_addr+1) <= x"16";
 			memory(lui_addr+2) <= x"00";
 			memory(lui_addr+3) <= x"28";
-
-		end if;
-	
-					--Blk Out Outputs a 8 words starting with the input address
-			Blk_Out(255 downto 224) <= memory(mem_blk) & memory(mem_blk + 1) & memory(mem_blk + 2) & memory(mem_blk + 3);
-			Blk_Out(223 downto 192) <= memory(mem_blk + 4) & memory(mem_blk + 5) & memory(mem_blk + 6) & memory(mem_blk + 7);
-			Blk_Out(191 downto 160) <= memory(mem_blk + 8) & memory(mem_blk + 9) & memory(mem_blk + 10) & memory(mem_blk + 11);
-			Blk_Out(159 downto 128) <= memory(mem_blk + 12) & memory(mem_blk + 13) & memory(mem_blk + 14) & memory(mem_blk + 15);
-			Blk_Out(127 downto 96) <= memory(mem_blk + 16) & memory(mem_blk + 17) & memory(mem_blk + 18) & memory(mem_blk + 19);
-			Blk_Out(95 downto 64) <= memory(mem_blk + 20) & memory(mem_blk + 21) & memory(mem_blk + 22) & memory(mem_blk + 23);
-			Blk_Out(63 downto 32) <= memory(mem_blk + 24) & memory(mem_blk + 25) & memory(mem_blk + 26) & memory(mem_blk + 27);
-			Blk_Out(31 downto 0) <= memory(mem_blk + 28) & memory(mem_blk + 29) & memory(mem_blk + 30) & memory(mem_blk + 31);
-	
-		Data_Out <= memory(mem_blk) & memory(mem_blk + 1) & memory(mem_blk + 2) & memory(mem_blk + 3);
-	end process mem_proc;
 		
+		--D-Cache Hit -> Write Thru (Write signle word to memory)
+		--R_W = 1 -> Load Branch (Outputs data at mem)
+		elsif (DHC = "1" and R_W = "1" and C_type = "1") then
+			memory(mem_blk) <= Data_In(31 downto 24) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+1) <= Data_In(23 downto 16) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+2) <= Data_In(15 downto 8) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+3) <= Data_In(7 downto 0) after (cycle_time * write_access) + (cycle_time * write_add);
+			LW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add);
+			
+		--D-Cache Miss -> Write Allocate (Writes block to cache)
+		--R_w = 1 -> Load Branch (Outputs blk at mem)
+		elsif (DHC = "0" and R_W = "1" and C_type = "1") then
+			memory(mem_blk) <= x"EE";
+			memory(mem_blk+1) <= x"EE";
+			memory(mem_blk+2) <= x"DD";
+			memory(mem_blk+3) <= x"DD";
+		
+		--D-Cache Hit -> Write Thru (Write single word to memory)
+		--R_W = 0 -> Store Branch 
+		elsif (DHC = "1" and R_W = "0" and C_type = "1") then
+			memory(mem_blk) <= Data_In(31 downto 24) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+1) <= Data_In(23 downto 16) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+2) <= Data_In(15 downto 8) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+3) <= Data_In(7 downto 0) after (cycle_time * write_access) + (cycle_time * write_add);
+			SW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add);
+		
+		--D-Cache Miss -> Write Allocate (Writes block to cache)
+		--R_W = 0 -> Store Word (Write word to mem, then read blks to update cache)
+		elsif (DHC = "0" and R_W = "0" and C_type = "1") then
+			memory(mem_blk) <= Data_In(31 downto 24) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+1) <= Data_In(23 downto 16) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+2) <= Data_In(15 downto 8) after (cycle_time * write_access) + (cycle_time * write_add);
+			memory(mem_blk+3) <= Data_In(7 downto 0) after (cycle_time * write_access) + (cycle_time * write_add);
+		end if;
+	end process mem_proc;
+	
+	--Writing the blk into the temp_blk
+	temp_blk_out(255 downto 224) <= memory(mem_blk) & memory(mem_blk + 1) & memory(mem_blk + 2) & memory(mem_blk + 3);
+	temp_blk_out(223 downto 192) <= memory(mem_blk + 4) & memory(mem_blk + 5) & memory(mem_blk + 6) & memory(mem_blk + 7);
+	temp_blk_out(191 downto 160) <= memory(mem_blk + 8) & memory(mem_blk + 9) & memory(mem_blk + 10) & memory(mem_blk + 11);
+	temp_blk_out(159 downto 128) <= memory(mem_blk + 12) & memory(mem_blk + 13) & memory(mem_blk + 14) & memory(mem_blk + 15);
+	temp_blk_out(127 downto 96) <= memory(mem_blk + 16) & memory(mem_blk + 17) & memory(mem_blk + 18) & memory(mem_blk + 19);
+	temp_blk_out(95 downto 64) <= memory(mem_blk + 20) & memory(mem_blk + 21) & memory(mem_blk + 22) & memory(mem_blk + 23);
+	temp_blk_out(63 downto 32) <= memory(mem_blk + 24) & memory(mem_blk + 25) & memory(mem_blk + 26) & memory(mem_blk + 27);
+	temp_blk_out(31 downto 0) <= memory(mem_blk + 28) & memory(mem_blk + 29) & memory(mem_blk + 30) & memory(mem_blk + 31);
+			
+	--When IHC = 1, write Data Out
+	Data_Out <= Data_In after (cycle_time * write_access) + (cycle_time * write_add) when (IHC = "1" and C_type /= "1") else
+				Data_In after (cycle_time * write_access) + (cycle_time * write_add) when (DHC = "1" and R_W = "1" and C_type = "1") else
+				Data_In after (cycle_time * write_access) + (cycle_time * write_add) when (DHC = "0" and R_W = "0" and C_type = "1");
+	--When IHC = 0, write Blk_Out
+	Blk_Out <= temp_blk_out after 8*((cycle_time * read_access) + (cycle_time * read_add)) when (IHC = "0" and C_type /= "1") else
+			   temp_blk_out after 8*((cycle_time * read_access) + (cycle_time * read_add)) when (DHC = "0" and R_W = "1" and C_type = "1") else
+			   temp_blk_out after 8*((cycle_time * read_access) + (cycle_time * read_add)) when (DHC = "0" and R_W = "0" and C_type = "1");
+			   
+	
+	
+	
 end architecture behave;
