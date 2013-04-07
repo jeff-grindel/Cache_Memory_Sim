@@ -19,8 +19,8 @@ L9
 VCEHRlAa=DX1hez5JHzSI[3
 Z6 OP;C;10.2a;57
 32
-Z7 !s110 1365367454
-Z8 !s108 1365367454.330000
+Z7 !s110 1365373500
+Z8 !s108 1365373500.386000
 Z9 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Bus_Model.vhd|
 Z10 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Bus_Model.vhd|
 Z11 o-work P2 -2002 -explicit -O0
@@ -58,7 +58,7 @@ V2D=24NMT?UKm>4BiThOoe0
 R6
 32
 R7
-Z17 !s108 1365367454.423000
+Z17 !s108 1365373500.479000
 Z18 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Bus_Model_Test.vhd|
 Z19 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Bus_Model_Test.vhd|
 R11
@@ -97,7 +97,7 @@ V[9SJ`5kSjeLzekBlm:X432
 R6
 32
 R7
-Z23 !s108 1365367454.559000
+Z23 !s108 1365373500.606000
 Z24 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/D_Cache.vhd|
 Z25 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/D_Cache.vhd|
 R11
@@ -136,7 +136,7 @@ V`Vn8zmQQY_^;F950lDdib3
 R6
 32
 R7
-Z29 !s108 1365367454.678000
+Z29 !s108 1365373500.754000
 Z30 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/D_Cache_Test.vhd|
 Z31 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/D_Cache_Test.vhd|
 R11
@@ -161,23 +161,97 @@ R11
 R12
 !s100 QZ]0:<HiB^[kCV3bPSD]i1
 !i10b 1
+Edcache_dataflow
+Z32 w1365372569
+R1
+R2
+R3
+Z33 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/DCache_Dataflow.vhd
+Z34 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/DCache_Dataflow.vhd
+l0
+L6
+VS5f;5c:azk@QVNOB90joc3
+R6
+32
+Z35 !s110 1365373501
+Z36 !s108 1365373501.943000
+Z37 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/DCache_Dataflow.vhd|
+Z38 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/DCache_Dataflow.vhd|
+R11
+R12
+!s100 bN<@CR;_A0_`7PRba]`]X2
+!i10b 1
+Abehave
+R1
+R2
+DEx4 work 15 dcache_dataflow 0 22 S5f;5c:azk@QVNOB90joc3
+l83
+L20
+V2;o=]4ZKdW=VU3_KP^mA93
+R6
+32
+R35
+R36
+R37
+R38
+R11
+R12
+!s100 @@X>AF=GOB;Ti;dHR@zO23
+!i10b 1
+Edcache_dataflow_test
+Z39 w1365373791
+R1
+R2
+R3
+Z40 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd
+Z41 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd
+l0
+L6
+V;YNP<I=hoQhGHV;5_6dV33
+!s100 ZNld8D3;zQ4>@T_C9:e^S3
+R6
+32
+Z42 !s110 1365373801
+!i10b 1
+Z43 !s108 1365373801.084000
+Z44 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd|
+Z45 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd|
+R11
+R12
+Abehave
+R1
+R2
+Z46 DEx4 work 20 dcache_dataflow_test 0 22 ;YNP<I=hoQhGHV;5_6dV33
+l43
+L9
+VS_[`M:FHYR`>B:aJ`=X;40
+!s100 ;^OVoAAS1mC1O?LePGC202
+R6
+32
+R42
+!i10b 1
+R43
+R44
+R45
+R11
+R12
 Ei_cache
-Z32 w1365367253
+Z47 w1365367253
 R14
 R1
 R2
 R3
-Z33 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache.vhd
-Z34 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache.vhd
+Z48 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache.vhd
+Z49 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache.vhd
 l0
 L8
 V216Pf3l;[8QR8F5bHmY;Q1
 R6
 32
 R7
-Z35 !s108 1365367454.807000
-Z36 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache.vhd|
-Z37 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache.vhd|
+Z50 !s108 1365373500.880000
+Z51 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache.vhd|
+Z52 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache.vhd|
 R11
 R12
 !s100 B[=gYzzjWaoaIkU`4CAIH1
@@ -193,30 +267,30 @@ VU9n6elcRZaFScKEOVD5k`0
 R6
 32
 R7
-R35
-R36
-R37
+R50
+R51
+R52
 R11
 R12
 !s100 z]n0MjUoWoP59n4jH2;>V1
 !i10b 1
 Ei_cache_test
-R26
+Z53 w1365370835
 R14
 R1
 R2
 R3
-Z38 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache_Test.vhd
-Z39 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache_Test.vhd
+Z54 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache_Test.vhd
+Z55 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache_Test.vhd
 l0
 L8
 VRfil]MXQ`8?AF`=RK5=773
 R6
 32
-R7
-Z40 !s108 1365367454.931000
-Z41 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache_Test.vhd|
-Z42 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache_Test.vhd|
+R35
+Z56 !s108 1365373500.996000
+Z57 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache_Test.vhd|
+Z58 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/I_Cache_Test.vhd|
 R11
 R12
 !s100 2F5I_S;lCcAE8Ub4Oj84I0
@@ -231,31 +305,31 @@ L11
 VL_=@ni4PlTP3SA@WLRYgN3
 R6
 32
-R7
-R40
-R41
-R42
+R35
+R56
+R57
+R58
 R11
 R12
 !s100 EfX4OUS3cHRK:Vz]R[?Id3
 !i10b 1
 Ememory
-Z43 w1365367422
+Z59 w1365367422
 R14
 R1
 R2
 R3
-Z44 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory.vhd
-Z45 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory.vhd
+Z60 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory.vhd
+Z61 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory.vhd
 l0
 L12
 V1YIOMYzQHWT:[XmLQMhF01
 R6
 32
-Z46 !s110 1365367455
-Z47 !s108 1365367455.058000
-Z48 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory.vhd|
-Z49 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory.vhd|
+R35
+Z62 !s108 1365373501.122000
+Z63 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory.vhd|
+Z64 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory.vhd|
 R11
 R12
 !s100 ZIZ>^[DiB0202^1]d<h[m3
@@ -270,10 +344,10 @@ L25
 VSPNU2iDB=N@2jg<0EPfha0
 R6
 32
-R46
-R47
-R48
-R49
+R35
+R62
+R63
+R64
 R11
 R12
 !s100 :F^d>eF7<gC0AeEEmIS<H2
@@ -284,17 +358,17 @@ R14
 R1
 R2
 R3
-Z50 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory_Test.vhd
-Z51 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory_Test.vhd
+Z65 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory_Test.vhd
+Z66 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory_Test.vhd
 l0
 L8
 Vn>c5k0BWDen7k_?bC5EjZ3
 R6
 32
-R46
-Z52 !s108 1365367455.228000
-Z53 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory_Test.vhd|
-Z54 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory_Test.vhd|
+R35
+Z67 !s108 1365373501.292000
+Z68 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory_Test.vhd|
+Z69 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Memory_Test.vhd|
 R11
 R12
 !s100 0S@KY`YZ2gWdCzX:^a6>X2
@@ -309,30 +383,30 @@ L11
 V8IUJ]b[aS4CkE`nGj:=fo3
 R6
 32
-R46
-R52
-R53
-R54
+R35
+R67
+R68
+R69
 R11
 R12
 !s100 LFSGmG0;zG^U8ad4>:K692
 !i10b 1
 Emux2_32
-Z55 w1365362257
+Z70 w1365362257
 R1
 R2
 R3
-Z56 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32.vhd
-Z57 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32.vhd
+Z71 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32.vhd
+Z72 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32.vhd
 l0
 L6
 VVYd`AUS]>m@7^]oA3f;US3
 R6
 32
-R46
-Z58 !s108 1365367455.346000
-Z59 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32.vhd|
-Z60 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32.vhd|
+R35
+Z73 !s108 1365373501.414000
+Z74 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32.vhd|
+Z75 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32.vhd|
 R11
 R12
 !s100 NZmYj772<`>dOKKiX6R150
@@ -344,50 +418,50 @@ DEx4 work 7 mux2_32 0 22 VYd`AUS]>m@7^]oA3f;US3
 l14
 L13
 Vb8jjMBo1_:_9;DOBcASTN0
-!s100 <=K2<3QK26zhNB6_?kBVZ0
 R6
 32
-R46
-R58
-R59
-R60
+R35
+R73
+R74
+R75
 R11
 R12
+!s100 <=K2<3QK26zhNB6_?kBVZ0
 !i10b 1
 Emux2_32_test
-Z61 w1365362298
+Z76 w1365362298
 R1
 R2
 R3
-Z62 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32_Test.vhd
-Z63 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32_Test.vhd
+Z77 8C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32_Test.vhd
+Z78 FC:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32_Test.vhd
 l0
 L6
 V2e@lPX2?<D==_bODA=URW1
-!s100 <fN`CeHl?8HS30HNB4FYi3
 R6
 32
-R46
-!i10b 1
-Z64 !s108 1365367455.466000
-Z65 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32_Test.vhd|
-Z66 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32_Test.vhd|
+R35
+Z79 !s108 1365373501.550000
+Z80 !s90 -reportprogress|300|-work|P2|-2002|-explicit|C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32_Test.vhd|
+Z81 !s107 C:/Users/Jeff Grinde/Documents/GitHub/ECE585/Mux2_32_Test.vhd|
 R11
 R12
+!s100 <fN`CeHl?8HS30HNB4FYi3
+!i10b 1
 Abehavior
 R1
 R2
-Z67 DEx4 work 12 mux2_32_test 0 22 2e@lPX2?<D==_bODA=URW1
+DEx4 work 12 mux2_32_test 0 22 2e@lPX2?<D==_bODA=URW1
 l26
 L9
-Z68 VN950nU3`mBDR65h8gPVl;3
-Z69 !s100 kjOLE8lQbKNL`QSe`VXi32
+VN950nU3`mBDR65h8gPVl;3
 R6
 32
-R46
-!i10b 1
-R64
-R65
-R66
+R35
+R79
+R80
+R81
 R11
 R12
+!s100 kjOLE8lQbKNL`QSe`VXi32
+!i10b 1

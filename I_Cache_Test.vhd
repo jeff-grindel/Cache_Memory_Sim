@@ -10,7 +10,7 @@ end entity;
 
 architecture behave of I_Cache_Test is
 
---declaration of the Behaviral Encoder
+--declaration of the Behaviral 
 COMPONENT I_Cache is
    port (IAddr : in std_logic_vector; -- 0x0 - 0x40
 		 IHC : in std_logic_vector(0 downto 0); --I-Cahche hit flag 1: Hit 0: Miss
