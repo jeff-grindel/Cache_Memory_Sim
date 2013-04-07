@@ -10,25 +10,19 @@ use ieee.std_logic_1164.all;
 use IEEE.NUMERIC_STD.all;
 
 entity Memory is
-   port (Addr : in std_logic_vector; 			--32-bit Address between 0x0-0x3FF
-		 IHC : in std_logic_vector(0 downto 0); -- 1 bit ICache Flag Input (1 for hit, 0 for miss, given by testbecnh)
-	     DHC : in std_logic_vector(0 downto 0); -- 1 bit DCache Flag Input (1 for hit, 0 for miss)
-		 R_W : in std_logic_vector(0 downto 0); 	--1 for read(Load), 0 for write(store)
-		 Data_In : in std_logic_vector(31 downto 0);-- Data input used in SW Instruction
-		 C_type : in std_logic_vector(0 downto 0); --1 for Data cache access, 0 for Instruction cache access
-		 
-		 LW_Done : out std_logic_vector(0 downto 0);
-		 SW_Done : out std_logic_vector(0 downto 0);
-		 	 
-		Data_Out: out std_logic_vector(31 downto 0);	--data output of 32-bit memory
-		Blk_Out: out std_logic_vector(255 downto 0));	--Block size of 8 words
-		 
-
+   port (Addr : in std_logic_vector; 					--32-bit Address between 0x0-0x3FF
+		 IHC : in std_logic_vector(0 downto 0); 		--1 bit ICache Flag Input (1 for hit, 0 for miss, given by testbecnh)
+	     DHC : in std_logic_vector(0 downto 0); 		--1 bit DCache Flag Input (1 for hit, 0 for miss)
+		 R_W : in std_logic_vector(0 downto 0); 		--1 for read(Load), 0 for write(store)
+		 Data_In : in std_logic_vector(31 downto 0);	--Data input used in SW Instruction
+		 C_type : in std_logic_vector(0 downto 0); 		--1 for Data cache access, 0 for Instruction cache access
+		 LW_Done : out std_logic_vector(0 downto 0);	--Load Word Done Flag
+		 SW_Done : out std_logic_vector(0 downto 0);	--Store Word Done Flag	 
+		 Data_Out: out std_logic_vector(31 downto 0);	--data output of 32-bit memory
+		 Blk_Out: out std_logic_vector(255 downto 0));	--Block size of 8 words
 end entity Memory;
 
 architecture behave of Memory is 
-	
-		
 	--initialaztion of a memory array of 1024 byte (Byte addressable decimal: 0-1023 (hex: 0x0 -> 0x3FF)
 	type array_type is array (0 to 1023) of std_logic_vector(7 downto 0);
 	signal memory : array_type := ((others => (others=>'0')));	--Initialize everything to 0
@@ -43,29 +37,26 @@ architecture behave of Memory is
 	constant beq_addr : integer := 12;
 	constant bne_addr : integer := 16;
 	constant lui_addr : integer := 20;
-	
-	--Data Positions (DAddr)
-	
-	
-	constant cycle_time : time := 1 ns;
-	--Access times all cycles/word
+
+	--Cycle Time and Access time constants multipliers
+	constant cycle_time : time := 10 ns;
 	constant read_access : integer :=  5;
 	constant write_access : integer := 3;
 	constant read_add : integer := 3;
 	constant write_add : integer := 4;
 	
 begin 
-
 	mem_proc : process (Addr, IHC, DHC, R_W, Data_In, C_type)
-	
 	begin
 		mem_blk := to_integer(unsigned(Addr));
+		
 		--I-Cahce Hit -> Write Thru (Write single word to memory)
 		if (IHC = "1" and C_type /= "1") then
 			memory(mem_blk) <= Data_In(31 downto 24) after (cycle_time * write_access) + (cycle_time * write_add);
 			memory(mem_blk+1) <= Data_In(23 downto 16) after (cycle_time * write_access) + (cycle_time * write_add);
 			memory(mem_blk+2) <= Data_In(15 downto 8) after (cycle_time * write_access) + (cycle_time * write_add);
 			memory(mem_blk+3) <= Data_In(7 downto 0) after (cycle_time * write_access) + (cycle_time * write_add);
+		
 		--I-Cache Miss -> Write Allocate (Writes block to cache)
 		elsif (IHC = "0" and C_type /= "1") then
 			--Init of fake instruction memory
@@ -149,12 +140,10 @@ begin
 	Data_Out <= Data_In after (cycle_time * write_access) + (cycle_time * write_add) when (IHC = "1" and C_type /= "1") else
 				Data_In after (cycle_time * write_access) + (cycle_time * write_add) when (DHC = "1" and R_W = "1" and C_type = "1") else
 				Data_In after (cycle_time * write_access) + (cycle_time * write_add) when (DHC = "0" and R_W = "0" and C_type = "1");
+	
 	--When IHC = 0, write Blk_Out
 	Blk_Out <= temp_blk_out after 8*((cycle_time * read_access) + (cycle_time * read_add)) when (IHC = "0" and C_type /= "1") else
 			   temp_blk_out after 8*((cycle_time * read_access) + (cycle_time * read_add)) when (DHC = "0" and R_W = "1" and C_type = "1") else
 			   temp_blk_out after 8*((cycle_time * read_access) + (cycle_time * read_add)) when (DHC = "0" and R_W = "0" and C_type = "1");
-			   
-	
-	
-	
+
 end architecture behave;

@@ -6,10 +6,10 @@ use ieee.std_logic_1164.all;
 use IEEE.NUMERIC_STD.all;
 
 entity I_Cache is
-   port (IAddr : in std_logic_vector; --Instruction address
-		 IHC : in std_logic_vector(0 downto 0); --I-Cahche hit flag 1: Hit 0: Miss
-		 Blk_In: in std_logic_vector(255 downto 0);	--Block size of 8 words
-		 I_Cache_Data: out std_logic_vector(31 downto 0));	--data output of 32-bit memory
+   port (IAddr : in std_logic_vector; 						--Instruction address
+		 IHC : in std_logic_vector(0 downto 0); 			--I-Cahche hit flag 1: Hit 0: Miss
+		 Blk_In: in std_logic_vector(255 downto 0);			--Block size of 8 words
+		 I_Cache_Data: out std_logic_vector(31 downto 0));	--Data output of 32-bit memory
 end entity I_Cache;
 
 architecture behave of I_Cache is 
@@ -17,6 +17,7 @@ architecture behave of I_Cache is
 	type i_array_type is array (0 to 63) of std_logic_vector(31 downto 0);
 	signal I_Cache : i_array_type := ((others => (others=>'0')));	--Initialize everything to 0
 	signal temp : integer;
+	
 	--signal mem_blk : natural;
 	shared variable mem_blk : natural;
 	
@@ -28,11 +29,10 @@ architecture behave of I_Cache is
 	constant bne_addr : integer := 32;
 	constant lui_addr : integer := 40;
 	
-	--
+	--Cycle Time Constant
 	constant cycle_time : time := 10 ns;
 	
 begin 
-
 	ICache_Proc :process  (IAddr, IHC)
 	begin	
 	mem_blk := to_integer(unsigned(IAddr)) mod 64;
@@ -60,6 +60,7 @@ begin
 		end if;
 	end process ICache_Proc;
 	
+	--Output The opcode
 	I_Cache_Data <= I_Cache(to_integer(unsigned(IAddr)) mod 64) after cycle_time when (IHC = "1") else	--If hit 
 					I_Cache(to_integer(unsigned(IAddr)) mod 64) after cycle_time when (IHC = "0" and Blk_In(255) /= 'U');
 	

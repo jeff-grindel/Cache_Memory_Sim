@@ -6,34 +6,30 @@ use ieee.std_logic_1164.all;
 use IEEE.NUMERIC_STD.all;
 
 entity D_Cache is
-   port (DAddr : in std_logic_vector; 	--Data address
-		 DHC : in std_logic_vector(0 downto 0); -- 1 bit DCache Flag Input (1 for hit, 0 for miss, given by testbecnh)
-	     Data_In : in std_logic_vector(31 downto 0); --32-bit data in
-		 Blk_In: in std_logic_vector(255 downto 0);	--Block size of 8 words
-		 R_W : in std_logic_vector(0 downto 0); -- 1 for load, 0 for store
-		 ALU_Done : in std_logic_vector (0 downto 0); --1 for done, 0 for not done
-		 LW_Done : out std_logic_vector (0 downto 0); --1 for done, 0 for not done
-		 SW_Done : out std_logic_vector (0 downto 0); --1 for done, 0 for not done
-		 D_Cache_Data: out std_logic_vector(31 downto 0));	--data output of 32-bit memory
+   port (DAddr : in std_logic_vector; 					--Data address
+		 DHC : in std_logic_vector(0 downto 0); 		-- 1 bit DCache Flag Input (1 for hit, 0 for miss, given by testbecnh)
+	     Data_In : in std_logic_vector(31 downto 0); 	--32-bit data in
+		 Blk_In: in std_logic_vector(255 downto 0);		--Block size of 8 words
+		 R_W : in std_logic_vector(0 downto 0); 		-- 1 for load, 0 for store
+		 ALU_Done : in std_logic_vector (0 downto 0);	--1 for done, 0 for not done
+		 LW_Done : out std_logic_vector (0 downto 0); 	--1 for done, 0 for not done
+		 SW_Done : out std_logic_vector (0 downto 0); 	--1 for done, 0 for not done
+		 D_Cache_Data: out std_logic_vector(31 downto 0));--data output of 32-bit memory
 end entity D_Cache;
 
 architecture behave of D_Cache is 
 	--initialaztion of a memory array of 256 byte (word addressable 32bit data 
 	type array_type is array (0 to 31) of std_logic_vector(31 downto 0);
 	signal D_Cache : array_type := ((others => (others=>'0')));	--Initialize everything to 0
-	
-	--Address positions
-	
-	
-	constant cycle_time : time := 10 ns;
-	
 	shared variable mem_blk : natural;
 	
-begin 
+	--Address positions
+	constant cycle_time : time := 10 ns;
 	
+begin 
 	DCache_Proc : process (Daddr, DHC, R_W, ALU_Done, Blk_In)
 	begin
-	mem_blk := to_integer(unsigned(DAddr)) mod 32;
+		mem_blk := to_integer(unsigned(DAddr)) mod 32;
 		--Not an alu operation -> SW or LW
 		if (ALU_Done = "0") then
 			--Load Hit
