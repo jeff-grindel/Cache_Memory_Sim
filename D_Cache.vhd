@@ -53,6 +53,7 @@ begin
 			--SW Hit(Address is in cache)
 			elsif (DHC = "1" and R_W = "0") then
 				D_Cache(mem_blk) <= Data_In;
+				SW_Done <= "1";
 			elsif (DHC = "0" and R_W = "0") then
 				if (Blk_In(255) /= 'U') then --only does the blk replacement if a blk is inputed
 					D_Cache(mem_blk) <= Blk_In(255 downto 224);		
@@ -73,6 +74,7 @@ begin
 	D_Cache_Data <= D_Cache(to_integer(unsigned(DAddr)) mod 32) after cycle_time when (ALU_Done = "0" and DHC = "1" and R_W = "1") else
 					D_Cache(to_integer(unsigned(DAddr)) mod 32) after cycle_time when (ALU_Done = "0" and DHC = "0" and R_W = "1" and Blk_In(255) /= 'U') else
 					D_Cache(to_integer(unsigned(DAddr)) mod 32) after cycle_time when (ALU_Done = "0" and DHC = "1" and R_W = "0") else	--SW Hit, update mem
-					D_Cache(to_integer(unsigned(DAddr)) mod 32) after cycle_time when (ALU_Done = "0" and DHC = "0" and R_W = "0" and Blk_In(255) /= 'U');
+					D_Cache(to_integer(unsigned(DAddr)) mod 32) after cycle_time when (ALU_Done = "0" and DHC = "0" and R_W = "0" and Blk_In(255) /= 'U') else
+					Data_In after cycle_time when (ALU_Done = "0" and DHC = "0" and R_W = "0");
 		
 end architecture behave;

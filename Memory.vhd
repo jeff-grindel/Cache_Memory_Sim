@@ -97,7 +97,7 @@ begin
 			memory(mem_blk+1) <= Data_In(23 downto 16) after (cycle_time * write_access) + (cycle_time * write_add);
 			memory(mem_blk+2) <= Data_In(15 downto 8) after (cycle_time * write_access) + (cycle_time * write_add);
 			memory(mem_blk+3) <= Data_In(7 downto 0) after (cycle_time * write_access) + (cycle_time * write_add);
-			LW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add);
+			--LW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add);
 			
 		--D-Cache Miss -> Write Allocate (Writes block to cache)
 		--R_w = 1 -> Load Branch (Outputs blk at mem)
@@ -114,7 +114,7 @@ begin
 			memory(mem_blk+1) <= Data_In(23 downto 16) after (cycle_time * write_access) + (cycle_time * write_add);
 			memory(mem_blk+2) <= Data_In(15 downto 8) after (cycle_time * write_access) + (cycle_time * write_add);
 			memory(mem_blk+3) <= Data_In(7 downto 0) after (cycle_time * write_access) + (cycle_time * write_add);
-			SW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add);
+			--SW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add);
 		
 		--D-Cache Miss -> Write Allocate (Writes block to cache)
 		--R_W = 0 -> Store Word (Write word to mem, then read blks to update cache)
@@ -146,4 +146,8 @@ begin
 			   temp_blk_out after 8*((cycle_time * read_access) + (cycle_time * read_add)) when (DHC = "0" and R_W = "1" and C_type = "1") else
 			   temp_blk_out after 8*((cycle_time * read_access) + (cycle_time * read_add)) when (DHC = "0" and R_W = "0" and C_type = "1");
 
+	LW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add) when (DHC = "1" and R_W = "1" and C_type = "1") else
+			   "1" after (8*((cycle_time * read_access) + (cycle_time * read_add)))	when (DHC = "0" and R_W = "1" and C_type = "1");
+	SW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add) when (DHC = "1" and R_W = "0" and C_type = "1") else	
+	           "1" after (8*((cycle_time * read_access) + (cycle_time * read_add))) when (DHC = "1" and R_W = "0" and C_type = "1") ;	
 end architecture behave;

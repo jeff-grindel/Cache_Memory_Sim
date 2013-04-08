@@ -67,32 +67,31 @@ begin
 	
 	Blk_Gen : process 
 	begin
-		TB_aBlk <= x"1111222211112222111122221111222211112222111122221111222211112222" after 60 ns;
+		--TB_aBlk <= x"1111222211112222111122221111222211112222111122221111222211112222" after 10000 ns;
 	wait;
 	end process Blk_Gen;
 	
 	ALU_Done_Gen : process 
 	begin
-		TB_aALU_Done <= "1" after 0 ns,
-						"0" after 40 ns;
+		TB_aALU_Done <= "0" after 0 ns;
 	wait;
 	end process ALU_Done_Gen;
 	
 	R_W_Gen : process 
 	begin	
-		TB_aR_W <= "1" after 0 ns;	--load is 1
+		TB_aR_W <= "0" after 0 ns;	--load is 1
 	wait;
 	end process R_W_Gen;
 	
 	DHC_Gen : process 
 	begin
-		TB_aDHC <= "1" after 0 ns;
+		TB_aDHC <= "0" after 0 ns;
 	wait;
 	end process DHC_Gen;
 	
 	Type_Gen : process 
 	begin
-		TB_aType <= "0" after 0 ns;
+		TB_aType <= "1" after 0 ns;
 	wait;
 	end process Type_Gen;
 	

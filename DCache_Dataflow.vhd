@@ -61,7 +61,6 @@ COMPONENT Memory is
 		 C_type : in std_logic_vector(0 downto 0); --1 for Data cache access, 0 for Instruction cache access
 		 LW_Done : out std_logic_vector(0 downto 0);
 		 SW_Done : out std_logic_vector(0 downto 0);
-		 	 
 		Data_Out: out std_logic_vector(31 downto 0);	--data output of 32-bit memory
 		Blk_Out: out std_logic_vector(255 downto 0));	--Block size of 8 words
 		 
@@ -78,22 +77,61 @@ end COMPONENT;
 signal T_Data_In : std_logic_vector (31 downto 0);
 signal T_Blk_In : std_logic_vector (255 downto 0);
 signal T_Data_Out : std_logic_vector (31 downto 0);
+signal T_Data_Out2 : std_logic_vector (31 downto 0);
+signal T_Data_Out3 : std_logic_vector (31 downto 0);
+signal T_Data_Out4 : std_logic_vector (31 downto 0);
 signal T_Blk_Out : std_logic_vector (255 downto 0);
-
+signal T_Blk_Out2 : std_logic_vector (255 downto 0);
+signal T_Addr_Out : std_logic_vector(31 downto 0);
 begin
 
 D_Cache_Mod : D_Cache port map (DAddr => aDAddr,
 								DHC =>  aDHC,
 								Data_In => aData,
-								Blk_In => aBlk,
+								Blk_In => T_Blk_Out2,
 								R_W => aR_W,
 								ALU_Done => aALU_Done,
-								--LW_Done => aLW_Done,
-								--SW_Done => aSW_Done,
+								LW_Done => aLW_Done,
+								SW_Done => aSW_Done,
 								D_Cache_Data => T_Data_Out);
 
--- Bus_1 : Bus_Model port map (D								
-								
--- D_Mem : Memory port map (							
-							
+Bus_1 : Bus_Model port map (Addr => aDAddr,
+							IHC => "U",
+							DHC =>  aDHC,
+							R_W =>  aR_W,
+							C_Type => aType,
+							Data_In => T_Data_Out,
+							Blk_In =>  aBlk,
+							Addr_Out =>T_Addr_Out,
+							Data_Out =>  T_Data_Out2);
+										
+D_Mem : Memory port map (Addr => aDAddr,	
+						 IHC =>  "U",
+						 DHC => aDHC,
+						 R_W => aR_W,
+						 Data_In => T_Data_Out2,
+						 C_type => aType,
+						 LW_Done => aLW_Done, 
+						 SW_Done => aSW_Done,
+						Data_Out => T_Data_Out3,
+						Blk_Out => T_Blk_Out);							
+
+Bus_2 : Bus_Model port map (Addr => aDAddr,
+							IHC => "U",
+							DHC =>  aDHC,
+							R_W =>  aR_W,
+							C_Type => aType,
+							Data_In => T_Data_Out3,
+							Blk_In =>  T_Blk_Out,
+							Addr_Out =>T_Addr_Out,
+							Data_Out =>  T_Data_Out4,
+							Blk_Out => T_Blk_Out2);
+
+Mux_32 : Mux2_32 port map (ZERO => 	T_Data_Out,
+						   ONE => T_Data_Out3,
+						   CTRL => aDHC,
+						   OUTPUT => aOut);
+
+
+						
 end architecture behave;	

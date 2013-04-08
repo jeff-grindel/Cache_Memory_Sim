@@ -8,32 +8,32 @@ dC:\Modeltech_pe_edu_10.2a\examples
 !i10e 25
 !i10f 100
 Ebus_model
-Z0 w1365205284
+Z0 w1365379028
 Z1 DPx3 std 6 textio 0 22 Y8d?=bLj9m4jiPLbo;>GT0
 Z2 DPx4 ieee 14 std_logic_1164 0 22 1bm?@Gd;P>[>_lN8Do9gP3
 Z3 dC:\Users\Jeff Grindel\Documents\GitHub\ECE585
 Z4 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model.vhd
 Z5 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model.vhd
 l0
-L13
-VNB=H`3L89]AkA[D>i@aNQ1
+L9
+VdAh9WSN]1J2o7Gob^;;oB1
 Z6 OP;C;10.2a;57
 32
-Z7 !s110 1365282468
-Z8 !s108 1365282468.060000
+Z7 !s110 1365385413
+Z8 !s108 1365385413.120000
 Z9 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model.vhd|
 Z10 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model.vhd|
 Z11 o-work Project_2 -2002 -explicit -O0
 Z12 tExplicit 1
-!s100 W>iL@Rj8fPk31>@[OiIHJ3
+!s100 LWb@P56ga1lLk2Kca]HDl1
 !i10b 1
 Abehave
 R1
 R2
-DEx4 work 9 bus_model 0 22 NB=H`3L89]AkA[D>i@aNQ1
-l29
-L28
-VNcRQW1cR]CUS3EkQiCfzK0
+DEx4 work 9 bus_model 0 22 dAh9WSN]1J2o7Gob^;;oB1
+l30
+L27
+VnS=f3I]:JoXbPOF?FPdNO3
 R6
 32
 R7
@@ -42,10 +42,10 @@ R9
 R10
 R11
 R12
-!s100 CHm1Zj521gSfTHMIjZN;C0
+!s100 [0:jXlK@_j9W<UPN@>LL92
 !i10b 1
 Ebus_model_test
-Z13 w1365201651
+Z13 w1365377008
 Z14 DPx4 ieee 11 numeric_std 0 22 WES[o8HS0jHV[MIXQk2Ha1
 R1
 R2
@@ -57,10 +57,10 @@ L8
 VCmUSY=XXAan^VTHP4zHXB1
 R6
 32
-Z17 !s110 1365282279
-Z18 !s108 1365282279.263000
-Z19 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model_Test.vhd|
-Z20 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model_Test.vhd|
+R7
+Z17 !s108 1365385413.188000
+Z18 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model_Test.vhd|
+Z19 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model_Test.vhd|
 R11
 R12
 !s100 7Eim7`?`9ej7>z]>ABbDL1
@@ -70,58 +70,58 @@ R14
 R1
 R2
 DEx4 work 14 bus_model_test 0 22 CmUSY=XXAan^VTHP4zHXB1
-l43
+l50
 L11
-VS?K[fEAh=H1Bl=lfQWj:13
+VB5B[iWF]>HG^DHP=mVVa23
 R6
 32
+R7
 R17
 R18
 R19
-R20
 R11
 R12
-!s100 Kc^6iNbKZn0>:QnHMFRJK1
+!s100 400oK`0b2<HVl@EMEMU8U1
 !i10b 1
 Ed_cache
-Z21 w1365281312
+Z20 w1365385812
 R14
 R1
 R2
 R3
-Z22 8C:\Users\Jeff Grindel\Documents\GitHub\ECE585\D_Cache.vhd
-Z23 FC:\Users\Jeff Grindel\Documents\GitHub\ECE585\D_Cache.vhd
+Z21 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache.vhd
+Z22 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache.vhd
 l0
 L8
 VJoPi<2AMiRJaB9kidUn683
+!s100 I=ANi=AdQ]4;cRz[kMfU[3
 R6
 32
-Z24 !s110 1365282280
-Z25 !s108 1365282280.261000
-Z26 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:\Users\Jeff Grindel\Documents\GitHub\ECE585\D_Cache.vhd|
-Z27 !s107 C:\Users\Jeff Grindel\Documents\GitHub\ECE585\D_Cache.vhd|
+Z23 !s110 1365385826
+!i10b 1
+Z24 !s108 1365385826.878000
+Z25 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache.vhd|
+Z26 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache.vhd|
 R11
 R12
-!s100 I=ANi=AdQ]4;cRz[kMfU[3
-!i10b 1
 Abehave
 R14
 R1
 R2
-DEx4 work 7 d_cache 0 22 JoPi<2AMiRJaB9kidUn683
-l32
+Z27 DEx4 work 7 d_cache 0 22 JoPi<2AMiRJaB9kidUn683
+l29
 L20
-VV0?iYKA6oAAd>lUakRIeE1
+V6N=9@@D0NLJz6?AJ?TR:U2
+!s100 >mK4O42PEjM]:J7E968@U2
 R6
 32
+R23
+!i10b 1
 R24
 R25
 R26
-R27
 R11
 R12
-!s100 [?k^7f1Ik?hPIk2S;QT?Q1
-!i10b 1
 Ed_cache_test
 Z28 w1365279958
 R14
@@ -135,10 +135,10 @@ L8
 VDJllVcn6_:4oIPjHIEBdz3
 R6
 32
-Z31 !s110 1365282281
-Z32 !s108 1365282281.393000
-Z33 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache_Test.vhd|
-Z34 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache_Test.vhd|
+R7
+Z31 !s108 1365385413.342000
+Z32 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache_Test.vhd|
+Z33 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache_Test.vhd|
 R11
 R12
 !s100 DP`c;o0NU5TcI]6:]Gck73
@@ -153,31 +153,105 @@ L11
 VdDk3C48ZP:aE7eX<I2zKK0
 R6
 32
+R7
 R31
 R32
 R33
-R34
 R11
 R12
 !s100 QZ]0:<HiB^[kCV3bPSD]i1
 !i10b 1
+Edcache_dataflow
+Z34 w1365384952
+R1
+R2
+R3
+Z35 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow.vhd
+Z36 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow.vhd
+l0
+L6
+Va`ZabHz8Q8[UzbKnWaWzG0
+R6
+32
+R7
+Z37 !s108 1365385413.748000
+Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow.vhd|
+Z39 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow.vhd|
+Z40 o-work work -2002 -explicit -O0
+R12
+!s100 bN<@CR;_A0_`7PRba]`]X2
+!i10b 1
+Abehave
+R1
+R2
+DEx4 work 15 dcache_dataflow 0 22 a`ZabHz8Q8[UzbKnWaWzG0
+l86
+L20
+Vhf9_hcDQTm6?eGgTFoA@n3
+R6
+32
+R7
+R37
+R38
+R39
+R40
+R12
+!s100 7DSFBhXfGEjIDWU1FcXH62
+!i10b 1
+Edcache_dataflow_test
+Z41 w1365385496
+R1
+R2
+R3
+Z42 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd
+Z43 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd
+l0
+L6
+V^S42?l=EW?M0Q0`[VGQW10
+R6
+32
+Z44 !s110 1365385521
+Z45 !s108 1365385521.573000
+Z46 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd|
+Z47 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd|
+R40
+R12
+!s100 ZNld8D3;zQ4>@T_C9:e^S3
+!i10b 1
+Abehave
+R1
+R2
+DEx4 work 20 dcache_dataflow_test 0 22 ^S42?l=EW?M0Q0`[VGQW10
+l43
+L9
+Vhi8KEQD:f1Ogd@=`_[mDe0
+R6
+32
+R44
+R45
+R46
+R47
+R40
+R12
+!s100 aC?WM7CkO1h@z_J8Aaced3
+!i10b 1
 Ei_cache
-Z35 w1365277597
+R13
 R14
 R1
 R2
 R3
-Z36 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd
-Z37 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd
+Z48 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd
+Z49 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd
 l0
 L8
 VM>PLZbL6WQ^S<;YbKUiAn2
 R6
 32
-R31
-Z38 !s108 1365282281.472000
-Z39 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd|
-Z40 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd|
+R7
+Z50 !s108 1365385413.421000
+Z51 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd|
+Z52 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd|
 R11
 R12
 !s100 B[=gYzzjWaoaIkU`4CAIH1
@@ -187,36 +261,36 @@ R14
 R1
 R2
 DEx4 work 7 i_cache 0 22 M>PLZbL6WQ^S<;YbKUiAn2
-l34
+l35
 L15
-V@m[hV1iMF[?]A^=EEIfJ>0
+VH[_RGZJWF`m5AiZ45fF?n1
 R6
 32
-R31
-R38
-R39
-R40
+R7
+R50
+R51
+R52
 R11
 R12
-!s100 GOFDK>>F^0[61nYX`iDdN0
+!s100 z]n0MjUoWoP59n4jH2;>V1
 !i10b 1
 Ei_cache_test
-Z41 w1365265654
+R13
 R14
 R1
 R2
 R3
-Z42 8C:\Users\Jeff Grindel\Documents\GitHub\ECE585\I_Cache_Test.vhd
-Z43 FC:\Users\Jeff Grindel\Documents\GitHub\ECE585\I_Cache_Test.vhd
+Z53 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache_Test.vhd
+Z54 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache_Test.vhd
 l0
 L8
 VUgRoe;SnlVlVLBdzS@kW;0
 R6
 32
-R31
-Z44 !s108 1365282281.553000
-Z45 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:\Users\Jeff Grindel\Documents\GitHub\ECE585\I_Cache_Test.vhd|
-Z46 !s107 C:\Users\Jeff Grindel\Documents\GitHub\ECE585\I_Cache_Test.vhd|
+R7
+Z55 !s108 1365385413.506000
+Z56 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache_Test.vhd|
+Z57 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache_Test.vhd|
 R11
 R12
 !s100 2F5I_S;lCcAE8Ub4Oj84I0
@@ -231,89 +305,163 @@ L11
 VZO:=8NWOI_`<d?OnGD=ZH0
 R6
 32
-R31
-R44
-R45
-R46
+R7
+R55
+R56
+R57
 R11
 R12
 !s100 EfX4OUS3cHRK:Vz]R[?Id3
 !i10b 1
 Ememory
-Z47 w1365283201
+Z58 w1365385184
 R14
 R1
 R2
 R3
-Z48 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd
-Z49 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd
+Z59 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd
+Z60 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd
 l0
 L12
-VDlfkBl41RRG5^OJWh:]_?0
+V9i2ESEMnUcBC[ZPLKUOZ71
 R6
 32
-Z50 !s110 1365283213
-Z51 !s108 1365283213.413000
-Z52 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd|
-Z53 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd|
+R7
+Z61 !s108 1365385413.582000
+Z62 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd|
+Z63 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd|
 R11
 R12
-!s100 Pb=BL3bIN8;cE6ln?=XbL1
+!s100 ZIZ>^[DiB0202^1]d<h[m3
 !i10b 1
 Abehave
 R14
 R1
 R2
-DEx4 work 6 memory 0 22 DlfkBl41RRG5^OJWh:]_?0
-l57
-L29
-VfPkT;H>]b5Mn>J5hOZ@ef2
+DEx4 work 6 memory 0 22 9i2ESEMnUcBC[ZPLKUOZ71
+l48
+L25
+VPW]@zS_B;mj<XHC?ZcLbQ3
 R6
 32
-R50
-R51
-R52
-R53
+R7
+R61
+R62
+R63
 R11
 R12
-!s100 R4;7nAO1U?i^fa36d?H`N2
+!s100 5_HgHYJo?1C>QlMM3A3mi1
 !i10b 1
 Ememory_test
-Z54 w1365283208
+Z64 w1365283208
 R14
 R1
 R2
 R3
-Z55 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd
-Z56 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd
+Z65 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd
+Z66 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd
 l0
 L8
 VMQE@18iKFY8hnDdL<f[c`3
-!s100 0S@KY`YZ2gWdCzX:^a6>X2
 R6
 32
-R50
-!i10b 1
-Z57 !s108 1365283213.492000
-Z58 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd|
-Z59 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd|
+R7
+Z67 !s108 1365385413.667000
+Z68 !s90 -reportprogress|300|-work|Project_2|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd|
+Z69 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd|
 R11
 R12
+!s100 0S@KY`YZ2gWdCzX:^a6>X2
+!i10b 1
 Abehave
 R14
 R1
 R2
-Z60 DEx4 work 11 memory_test 0 22 MQE@18iKFY8hnDdL<f[c`3
+DEx4 work 11 memory_test 0 22 MQE@18iKFY8hnDdL<f[c`3
 l45
 L11
 VFYaRf4YIUcSC5[:O=Q_cd3
-!s100 LFSGmG0;zG^U8ad4>:K692
 R6
 32
-R50
-!i10b 1
-R57
-R58
-R59
+R7
+R67
+R68
+R69
 R11
 R12
+!s100 LFSGmG0;zG^U8ad4>:K692
+!i10b 1
+Emux2_32
+R13
+R1
+R2
+R3
+Z70 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32.vhd
+Z71 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32.vhd
+l0
+L6
+VFfT3XngF@i``Q8L3Sa4QA0
+R6
+32
+Z72 !s110 1365385459
+Z73 !s108 1365385459.219000
+Z74 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32.vhd|
+Z75 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32.vhd|
+R40
+R12
+!s100 NZmYj772<`>dOKKiX6R150
+!i10b 1
+Abehavior
+R1
+R2
+DEx4 work 7 mux2_32 0 22 FfT3XngF@i``Q8L3Sa4QA0
+l14
+L13
+Vzo_D<ocRGmJH?@BU=ck_B0
+R6
+32
+R72
+R73
+R74
+R75
+R40
+R12
+!s100 <=K2<3QK26zhNB6_?kBVZ0
+!i10b 1
+Emux2_32_test
+R13
+R1
+R2
+R3
+Z76 8C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32_Test.vhd
+Z77 FC:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32_Test.vhd
+l0
+L6
+VIlo]J2:ED7Zkig0`:Pb181
+R6
+32
+R72
+Z78 !s108 1365385459.285000
+Z79 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32_Test.vhd|
+Z80 !s107 C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32_Test.vhd|
+R40
+R12
+!s100 <fN`CeHl?8HS30HNB4FYi3
+!i10b 1
+Abehavior
+R1
+R2
+DEx4 work 12 mux2_32_test 0 22 Ilo]J2:ED7Zkig0`:Pb181
+l26
+L9
+VWH[k1RWBS_flok<[FAeo12
+R6
+32
+R72
+R78
+R79
+R80
+R40
+R12
+!s100 kjOLE8lQbKNL`QSe`VXi32
+!i10b 1

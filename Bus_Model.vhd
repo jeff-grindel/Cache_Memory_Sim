@@ -7,7 +7,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity Bus_Model is
-   port (Addr : in std_logic_vector; 	
+   port (Addr : in std_logic_vector (31 downto 0); 	
 		 IHC : in std_logic_vector (0 downto 0);
 	     DHC : in std_logic_vector (0 downto 0); 
 		 R_W : in std_logic_vector (0 downto 0);
@@ -15,7 +15,7 @@ entity Bus_Model is
 		 Data_In : in std_logic_vector (31 downto 0);
 		 Blk_In : in std_logic_vector (255 downto 0);
 		
-		 Addr_Out: out std_logic_vector; 
+		 Addr_Out: out std_logic_vector (31 downto 0); 
 		 IHC_Out: out std_logic_vector (0 downto 0); 
 	     DHC_Out : out std_logic_vector (0 downto 0);
 		 R_W_Out : out std_logic_vector (0 downto 0);

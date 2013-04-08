@@ -1,15 +1,4 @@
-{C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache.vhd} {2 {vcom -work Project_2 -2002 -explicit {C:\Users\Jeff Grindel\Documents\GitHub\ECE585\D_Cache.vhd}
-Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity D_Cache
--- Compiling architecture behave of D_Cache
-** Warning: C:\Users\Jeff Grindel\Documents\GitHub\ECE585\D_Cache.vhd(30): (vcom-1236) Shared variables must be of a protected type.
-
-
-} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache_Test.vhd} {1 {vcom -work Project_2 -2002 -explicit {C:\Users\Jeff Grindel\Documents\GitHub\ECE585\I_Cache_Test.vhd}
+{C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache_Test.vhd} {1 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache_Test.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -17,6 +6,72 @@ Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 
 -- Loading package NUMERIC_STD
 -- Compiling entity I_Cache_Test
 -- Compiling architecture behave of I_Cache_Test
+
+} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd} {2 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity I_Cache
+-- Compiling architecture behave of I_Cache
+** Warning: C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd(22): (vcom-1236) Shared variables must be of a protected type.
+
+
+} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache_Test.vhd} {1 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache_Test.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity D_Cache_Test
+-- Compiling architecture behave of D_Cache_Test
+
+} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32_Test.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32_Test.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Mux2_32_Test
+-- Compiling architecture behavior of Mux2_32_Test
+
+} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow_Test.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity DCache_Dataflow_Test
+-- Compiling architecture behave of DCache_Dataflow_Test
+
+} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Mux2_32.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Mux2_32
+-- Compiling architecture behavior of Mux2_32
+
+} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd} {2 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity Memory
+-- Compiling architecture behave of Memory
+** Warning: C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd(29): (vcom-1236) Shared variables must be of a protected type.
+
+
+} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache.vhd} {2 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache.vhd}
+Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity D_Cache
+-- Compiling architecture behave of D_Cache
+** Warning: C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache.vhd(24): (vcom-1236) Shared variables must be of a protected type.
+
 
 } {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd} {1 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory_Test.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
@@ -27,28 +82,6 @@ Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 
 -- Compiling entity Memory_Test
 -- Compiling architecture behave of Memory_Test
 
-} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd} {2 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd}
-Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity I_Cache
--- Compiling architecture behave of I_Cache
-** Warning: C:/Users/Jeff Grindel/Documents/GitHub/ECE585/I_Cache.vhd(21): (vcom-1236) Shared variables must be of a protected type.
-
-
-} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd} {2 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd}
-Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity Memory
--- Compiling architecture behave of Memory
-** Warning: C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Memory.vhd(35): (vcom-1236) Shared variables must be of a protected type.
-
-
 } {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model_Test.vhd} {1 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model_Test.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
 -- Loading package STANDARD
@@ -58,14 +91,13 @@ Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 
 -- Compiling entity Bus_Model_Test
 -- Compiling architecture behave of Bus_Model_Test
 
-} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache_Test.vhd} {1 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/D_Cache_Test.vhd}
+} {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/DCache_Dataflow.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity D_Cache_Test
--- Compiling architecture behave of D_Cache_Test
+-- Compiling entity DCache_Dataflow
+-- Compiling architecture behave of DCache_Dataflow
 
 } {} {}} {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model.vhd} {1 {vcom -work Project_2 -2002 -explicit {C:/Users/Jeff Grindel/Documents/GitHub/ECE585/Bus_Model.vhd}
 Model Technology ModelSim PE Student Edition vcom 10.2a Compiler 2013.03 Mar 15 2013
