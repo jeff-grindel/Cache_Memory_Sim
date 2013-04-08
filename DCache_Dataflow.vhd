@@ -113,8 +113,8 @@ D_Mem : Memory port map (Addr => aDAddr,
 						 C_type => aType,
 						 LW_Done => aLW_Done, 
 						 SW_Done => aSW_Done,
-						Data_Out => T_Data_Out3,
-						Blk_Out => T_Blk_Out);							
+						 Data_Out => T_Data_Out3,
+						 Blk_Out => T_Blk_Out);							
 
 Bus_2 : Bus_Model port map (Addr => aDAddr,
 							IHC => "U",

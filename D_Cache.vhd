@@ -76,5 +76,7 @@ begin
 					D_Cache(to_integer(unsigned(DAddr)) mod 32) after cycle_time when (ALU_Done = "0" and DHC = "1" and R_W = "0") else	--SW Hit, update mem
 					D_Cache(to_integer(unsigned(DAddr)) mod 32) after cycle_time when (ALU_Done = "0" and DHC = "0" and R_W = "0" and Blk_In(255) /= 'U') else
 					Data_In after cycle_time when (ALU_Done = "0" and DHC = "0" and R_W = "0");
+	
+	SW_Done <= "1" after cycle_time when (ALU_Done = "0" and DHC = "0" and R_W = "0");
 		
 end architecture behave;

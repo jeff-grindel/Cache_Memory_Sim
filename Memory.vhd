@@ -149,5 +149,5 @@ begin
 	LW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add) when (DHC = "1" and R_W = "1" and C_type = "1") else
 			   "1" after (8*((cycle_time * read_access) + (cycle_time * read_add)))	when (DHC = "0" and R_W = "1" and C_type = "1");
 	SW_Done <= "1" after (cycle_time * write_access) + (cycle_time * write_add) when (DHC = "1" and R_W = "0" and C_type = "1") else	
-	           "1" after (8*((cycle_time * read_access) + (cycle_time * read_add))) when (DHC = "1" and R_W = "0" and C_type = "1") ;	
+	           "1" after (8*((cycle_time * read_access) + (cycle_time * read_add))) when (DHC = "0" and R_W = "0" and C_type = "1") ;	
 end architecture behave;
