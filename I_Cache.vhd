@@ -22,12 +22,12 @@ architecture behave of I_Cache is
 	shared variable mem_blk : natural;
 	
 	--Address in cache for the instructions 
-	constant lw_addr : integer := 0;
-	constant sw_addr : integer := 8;
-	constant add_addr : integer := 16;
-	constant beq_addr : integer := 24;
-	constant bne_addr : integer := 32;
-	constant lui_addr : integer := 40;
+	constant lw_addr : integer := 0; --504-600  --0x200 (512)
+	constant sw_addr : integer := 8; --604-700	--0x288 (648)
+	constant add_addr : integer := 16; --0-500  --0x010 (16)
+	constant beq_addr : integer := 24; --0-500	--0x018 (24)
+	constant bne_addr : integer := 32; --0-500  --0x020 (32)
+	constant lui_addr : integer := 40; --0-500	--0x028 (40)
 	
 	--Cycle Time Constant
 	constant cycle_time : time := 10 ns;
@@ -42,8 +42,8 @@ begin
 			I_Cache(lw_addr) <= x"857100C8";
 			I_Cache(sw_addr) <= x"AD930064";
 			I_Cache(add_addr) <= x"016A9020";
-			I_Cache(beq_addr) <= x"11111111";
-			I_Cache(bne_addr) <= x"11111111";
+			I_Cache(beq_addr) <= x"12AE03E8";
+			I_Cache(bne_addr) <= x"16AE04E0";
 			I_Cache(lui_addr) <= x"3C160028";	
 		elsif(IHC = "0") then
 			if (Blk_In(255) /= 'U') then	--only does blk replacment when a blk_in is inputed

@@ -79,13 +79,13 @@ begin
 	
 	R_W_Gen : process 
 	begin	
-		TB_aR_W <= "0" after 0 ns;	--load is 1
+		TB_aR_W <= "1" after 0 ns;	--load is 1
 	wait;
 	end process R_W_Gen;
 	
 	DHC_Gen : process 
 	begin
-		TB_aDHC <= "0" after 0 ns;
+		TB_aDHC <= "1" after 0 ns;
 	wait;
 	end process DHC_Gen;
 	

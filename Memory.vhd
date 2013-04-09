@@ -31,12 +31,12 @@ architecture behave of Memory is
 	signal temp_blk_out: std_logic_vector(255 downto 0);
 	
 	--Instruion Positions (addr of the instructions):
-	constant lw_addr : integer := 0;
-	constant sw_addr : integer := 4;
-	constant add_addr : integer := 8;
-	constant beq_addr : integer := 12;
-	constant bne_addr : integer := 16;
-	constant lui_addr : integer := 20;
+	constant lw_addr : integer := 512; --0x200
+	constant sw_addr : integer := 648; --0x288 
+	constant add_addr : integer := 16;  --0x010
+	constant beq_addr : integer := 24;	--0x018
+	constant bne_addr : integer := 32;	--0x020
+	constant lui_addr : integer := 40;	--0x028
 
 	--Cycle Time and Access time constants multipliers
 	constant cycle_time : time := 10 ns;
@@ -75,15 +75,15 @@ begin
 			memory(add_addr+2) <= x"90";
 			memory(add_addr+3) <= x"20";
 			
-			memory(beq_addr) <= x"11";
-			memory(beq_addr+1) <= x"11";
-			memory(beq_addr+2) <= x"11";
-			memory(beq_addr+3) <= x"11";
+			memory(beq_addr) <= x"12";
+			memory(beq_addr+1) <= x"AE";
+			memory(beq_addr+2) <= x"03";
+			memory(beq_addr+3) <= x"E8";
 			
-			memory(bne_addr) <= x"11";
-			memory(bne_addr+1) <= x"11";
-			memory(bne_addr+2) <= x"11";
-			memory(bne_addr+3) <= x"11";	
+			memory(bne_addr) <= x"16";
+			memory(bne_addr+1) <= x"AE";
+			memory(bne_addr+2) <= x"04";
+			memory(bne_addr+3) <= x"E0";	
 			
 			memory(lui_addr) <= x"3C";
 			memory(lui_addr+1) <= x"16";
