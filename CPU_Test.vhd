@@ -45,12 +45,10 @@ begin
   
   TB_OPC_Load : process
   begin 
-	 TB_OPC <= x"857100C8" after 20 ns; --AlU
-	 wait;
-  	TB_OPC <= x"00000000" after 20 ns; --load
-  	wait;
-  	TB_OPC <= x"AD930064" after 20 ns;  --store
-  	wait;
+	 TB_OPC <= x"857100C8" after 0 ns, --Load
+			   x"AD930064" after 20 ns,	--Store
+			   x"00110011" after 40 ns; --Others
+	wait;
   end process TB_OPC_Load;
 end architecture behave;	
 

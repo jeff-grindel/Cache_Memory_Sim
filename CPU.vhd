@@ -25,7 +25,7 @@ OPC_Proc : process (OPC)
 		if (OPC = x"857100C8") then   --Load instruction
 		  report "In load";
 		  ALU_DONE<="0";
-		  DAddr<=x"11111111"; 
+		  DAddr<=x"11111111"; --Should be between 0x000 and 0x3FF (Memory value only supports 0->1023)
 			R_W<="1";
 			Data<="1";
 			Data_reg<=x"00000000";
@@ -33,7 +33,7 @@ OPC_Proc : process (OPC)
 		elsif (OPC = x"AD930064") then -- Store instruction 
 		  report "In Store";
 		  ALU_DONE<="0";
-			DAddr<=x"33333333";
+			DAddr<=x"33333333"; --Should be between 0x000 and 0x3FF (Memory value only supports 0->1023)
 			R_W<="0";
 			Data<="1";
 			Data_reg<=x"33333333";
