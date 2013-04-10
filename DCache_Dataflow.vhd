@@ -66,10 +66,11 @@ COMPONENT Memory is
 		 
 end COMPONENT;
 
-COMPONENT Mux2_32 is
+COMPONENT Mux22_32 is
 	port (ZERO: in std_logic_vector(31 downto 0);
 		  ONE: in std_logic_vector(31 downto 0);
-		  CTRL: in std_logic_vector(0 downto 0);
+		  CTRL1: in std_logic_vector(0 downto 0);
+		  CTRL2: in std_logic_vector(0 downto 0);
 		  OUTPUT: out std_logic_vector(31 downto 0));
 end COMPONENT;
 
@@ -127,9 +128,10 @@ Bus_2 : Bus_Model port map (Addr => aDAddr,
 							Data_Out =>  T_Data_Out4,
 							Blk_Out => T_Blk_Out2);
 
-Mux_32 : Mux2_32 port map (ZERO => 	T_Data_Out,
+Mux_32 : Mux22_32 port map (ZERO => 	T_Data_Out,
 						   ONE => T_Data_Out3,
-						   CTRL => aDHC,
+						   CTRL1 => aDHC,
+						   CTRL2 => aR_W,
 						   OUTPUT => aOut);
 
 
