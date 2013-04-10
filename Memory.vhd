@@ -77,13 +77,13 @@ begin
 			
 			memory(beq_addr) <= x"12";
 			memory(beq_addr+1) <= x"AE";
-			memory(beq_addr+2) <= x"03";
-			memory(beq_addr+3) <= x"E8";
+			memory(beq_addr+2) <= x"01";
+			memory(beq_addr+3) <= x"78";
 			
 			memory(bne_addr) <= x"16";
 			memory(bne_addr+1) <= x"AE";
-			memory(bne_addr+2) <= x"04";
-			memory(bne_addr+3) <= x"E0";	
+			memory(bne_addr+2) <= x"01";
+			memory(bne_addr+3) <= x"D4";	
 			
 			memory(lui_addr) <= x"3C";
 			memory(lui_addr+1) <= x"16";

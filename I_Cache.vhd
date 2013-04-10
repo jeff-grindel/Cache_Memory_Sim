@@ -42,8 +42,8 @@ begin
 			I_Cache(lw_addr) <= x"857100C8";
 			I_Cache(sw_addr) <= x"AD930064";
 			I_Cache(add_addr) <= x"016A9020";
-			I_Cache(beq_addr) <= x"12AE03E8";
-			I_Cache(bne_addr) <= x"16AE04E0";
+			I_Cache(beq_addr) <= x"12AE0178";
+			I_Cache(bne_addr) <= x"16AE01D4";
 			I_Cache(lui_addr) <= x"3C160028";	
 		elsif(IHC = "0") then
 			if (Blk_In(255) /= 'U') then	--only does blk replacment when a blk_in is inputed
