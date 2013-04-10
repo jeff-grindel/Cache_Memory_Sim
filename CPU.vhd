@@ -29,7 +29,7 @@ begin
 				R_W<="1";
 				Data<="1";
 				Data_reg<=x"00000000";
-				Reg_Num <= "10001"; --R17
+				Reg_Num <= "010001"; --R17
 			elsif (OPC = x"AD930064") then -- Store instruction 
 				report "In Store";
 				ALU_DONE<="0";
@@ -42,20 +42,20 @@ begin
 				DAddr<=x"00000000";
 				Data<="0";
 				Data_reg<=x"00000000";
-				Reg_Num <= "10011";
+				Reg_Num <= "010011";
 			elsif (OPC = x"3C160028") then --LUI
 				ALU_DONE<="1";
 				DAddr<=x"00000000";
 				Data<="0";
 				Data_reg<=x"00000000";
-				Reg_Num <= "10110";
+				Reg_Num <= "010110";
 			else  --ALU instruction
 				report "In ALU";
 				ALU_DONE<="1";
 				DAddr<=x"00000000";
 				Data<="0";
 				Data_reg<=x"00000000";
-				Reg_Num <= "00000";
+				Reg_Num <= "000000";
 			end if;
 			
 	end process OPC_Proc;

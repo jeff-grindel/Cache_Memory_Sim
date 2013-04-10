@@ -7,14 +7,15 @@ use ieee.numeric_std.all;
 
 
 entity iSystem is
-  port (IAddr : in std_logic_vector;
-	 ALU_DONE: out std_logic_vector (0 downto 0); 
-   R_W: out std_logic_vector (0 downto 0); 
-   DAddr: out std_logic_vector (31 downto 0);    Data: out std_logic_vector (0 downto 0); 
-   Data_reg: out std_logic_vector (31 downto 0) 
- );
- 
- 
+  port (
+	aIAddr : in std_logic_vector(31 downto 0);
+	aIHC : in std_logic_vector(0 downto 0); --I-Cahche hit flag 1: Hit 0: Miss
+	aALU_DONE: out std_logic_vector (0 downto 0); 
+	aR_W: out std_logic_vector (0 downto 0); 
+	aDAddr: out std_logic_vector (31 downto 0);    
+	aData: out std_logic_vector (0 downto 0); 
+	aData_reg: out std_logic_vector (31 downto 0);
+	aReg_Num: out std_logic_vector (5 downto 0)); --5 bit register number
 end iSystem;
 
 architecture behave of iSystem is 
@@ -53,8 +54,27 @@ COMPONENT CPU is
    R_W: out std_logic_vector (0 downto 0); --2 bit Instruction type flag (0==Load) (1==Store) (2==Alu)
    DAddr: out std_logic_vector (31 downto 0); --2 bit Instruction type flag (0==Load) (1==Store) (2==Alu)
    Data: out std_logic_vector (0 downto 0); --2 bit Instruction type flag (0==Load) (1==Store) (2==Alu)
-   Data_reg: out std_logic_vector (31 downto 0) --2 bit Instruction type flag (0==Load) (1==Store) (2==Alu)
- );
+   Data_reg: out std_logic_vector (31 downto 0); --2 bit Instruction type flag (0==Load) (1==Store) (2==Alu)
+   Reg_Num: out std_logic_vector (5 downto 0)); --5 bit register number
+
+end COMPONENT;
+
+COMPONENT Bus_Model is
+   port (Addr : in std_logic_vector; 	
+		 IHC : in std_logic_vector (0 downto 0);
+	     DHC : in std_logic_vector (0 downto 0); 
+		 R_W : in std_logic_vector (0 downto 0);
+		 C_Type : in std_logic_vector (0 downto 0);
+		 Data_In : in std_logic_vector (31 downto 0);
+		 Blk_In : in std_logic_vector (255 downto 0);
+		
+		 Addr_Out: out std_logic_vector; 
+		 IHC_Out: out std_logic_vector (0 downto 0); 
+	     DHC_Out : out std_logic_vector (0 downto 0);
+		 R_W_Out : out std_logic_vector (0 downto 0);
+		 C_Type_Out : out std_logic_vector (0 downto 0);
+		 Data_Out : out std_logic_vector (31 downto 0);
+		 Blk_Out : out std_logic_vector(255 downto 0)); 
 end COMPONENT;
 
 
@@ -105,14 +125,14 @@ signal CPU_Data_reg: std_logic_vector (31 downto 0);
 			
 begin
 	i_cache_1: I_Cache PORT MAP (
-			IAddr=>ICACHE_I_IAddr,
-			IHC =>ICACHE_I_IHC,
+			IAddr=>aIAddr,
+			IHC =>aIHC,
 			Blk_In =>ICACHE_I_Blk_In, --in (Undriven for first cache)
 			I_Cache_Data =>ICACHE_I_I_Cache_Data);
 			
 	mem: Memory PORT MAP (
-			Addr => ICACHE_I_IAddr,--in
-			IHC => ICACHE_I_IHC,   --in
+			Addr => aIAddr,--in
+			IHC => aIHC,   --in
 			DHC => MEM_DHC,        --in (Undriven for Instruction flow)    
 			R_W => MEM_R_W,        --in (Undriven for Instruction flow)   
 			Data_In => ICACHE_I_I_Cache_Data,--in
@@ -123,28 +143,31 @@ begin
 			Blk_Out => MEM_Blk_Out);
 
 	i_cache_2: I_Cache PORT MAP (
-			IAddr=>ICACHE_I_IAddr,--in
-			IHC => ICACHE_I_IHC,--in
+			IAddr=>aIAddr,--in
+			IHC => aIHC,--in
 			Blk_In => MEM_Blk_Out,--in
 			I_Cache_Data =>ICACHE_II_Cache_Data);
 			
 	mux: Mux2_32 PORT MAP (
-			ZERO => ICACHE_II_Cache_Data, --in
-			ONE => MEM_Data_Out,--in
-			CTRL => ICACHE_I_IHC,--in
+			ZERO => MEM_Data_Out, --in
+			ONE => ICACHE_II_Cache_Data,--in
+			CTRL => aIHC,--in
 			OUTPUT => MUX_OUTPUT);
 			
   cpu_uut: CPU PORT MAP (
 			OPC => MUX_OUTPUT, --in
-			ALU_DONE => CPU_ALU_DONE,
-			R_W => CPU_R_W,
-			DAddr => CPU_DAddr,
-			Data => CPU_Data,
-			Data_reg => CPU_Data_reg); 
+			ALU_DONE => aALU_DONE,
+			R_W => aR_W,
+			DAddr => aDAddr,
+			Data => aData,
+			Data_reg => aData_reg,
+			Reg_Num=>aReg_Num); 
 
   
   
 end architecture behave;
+
+
 
 
 
