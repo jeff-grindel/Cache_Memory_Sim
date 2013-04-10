@@ -71,7 +71,7 @@ signal ICACHE_II_IAddr : std_logic_vector (7 downto 0);
 signal ICACHE_II_IHC : std_logic_vector(0 downto 0); --I-Cahche hit flag	
 signal ICACHE_II_Blk_In: std_logic_vector(255 downto 0); --1 for read, 0 for write
 --Declaration of Outputs	
-signal ICACHE_II_I_Cache_Data: std_logic_vector(31 downto 0);
+signal ICACHE_II_cache_Data: std_logic_vector(31 downto 0);
 ------------------------------------------------Memory Signals------------------------------------------------------------
 --Declaration of test signal Inputs
 signal MEM_Addr : std_logic_vector(31 downto 0);								
@@ -102,52 +102,45 @@ signal CPU_DAddr:  std_logic_vector (31 downto 0);
 signal CPU_Data:  std_logic_vector (0 downto 0); 
 signal CPU_Data_reg: std_logic_vector (31 downto 0);
 
-			IAddr => TB_IAddr,
-			IHC => TB_IHC,
-			Blk_In => TB_Blk_In,
-			I_Cache_Data => TB_I_Cache_Data);
-			
 			
 begin
 	i_cache_1: I_Cache PORT MAP (
 			IAddr=>ICACHE_I_IAddr,
 			IHC =>ICACHE_I_IHC,
-			Blk_In =>ICACHE_I_Blk_In,
-			I_Cache_Data =>ICACHE_II_I_Cache_Data);
+			Blk_In =>ICACHE_I_Blk_In, --in (Undriven for first cache)
+			I_Cache_Data =>ICACHE_I_I_Cache_Data);
 			
+	mem: Memory PORT MAP (
+			Addr => ICACHE_I_IAddr,--in
+			IHC => ICACHE_I_IHC,   --in
+			DHC => MEM_DHC,        --in (Undriven for Instruction flow)    
+			R_W => MEM_R_W,        --in (Undriven for Instruction flow)   
+			Data_In => ICACHE_I_I_Cache_Data,--in
+			C_type => "1",  --in   (instruction)
+			LW_Done => MEM_LW_Done,   --(Undriven for Instruction flow)   
+			SW_Done => MEM_SW_Done,   --(Undriven for Instruction flow) 
+			Data_Out => MEM_Data_Out, --(Undriven for Instruction flow) 
+			Blk_Out => MEM_Blk_Out);
+
 	i_cache_2: I_Cache PORT MAP (
-			IAddr=>ICACHE_II_ICACHE_I_IAddr,
-			IHC => ICACHE_II_ICACHE_I_IHC,
-			Blk_In => ICACHE_II_ICACHE_I_Blk_In,
-			I_Cache_Data =>ICACHE_II_ICACHE_I_I_Cache_Data);
+			IAddr=>ICACHE_I_IAddr,--in
+			IHC => ICACHE_I_IHC,--in
+			Blk_In => MEM_Blk_Out,--in
+			I_Cache_Data =>ICACHE_II_Cache_Data);
 			
-	cpu: CPU PORT MAP (
-			OPC,
+	mux: Mux2_32 PORT MAP (
+			ZERO => ICACHE_II_Cache_Data, --in
+			ONE => MEM_Data_Out,--in
+			CTRL => ICACHE_I_IHC,--in
+			OUTPUT => MUX_OUTPUT);
+			
+  cpu_uut: CPU PORT MAP (
+			OPC => MUX_OUTPUT, --in
 			ALU_DONE => CPU_ALU_DONE,
 			R_W => CPU_R_W,
 			DAddr => CPU_DAddr,
 			Data => CPU_Data,
-			Data_reg => CPU_Data_reg);
-			
-	mux: Mux2_32 PORT MAP (
-			ZERO => MUX_ZERO,
-			ONE => MUX_ONE,
-			CTRL => MUX_CTRL,
-			OUTPUT => MUX_OUTPUT);
-			
-	mem: Memory PORT MAP (
-			Addr => MEM_Addr,
-			IHC => MEM_IHC,
-			DHC => MEM_DHC,
-			R_W => MEM_R_W,
-			Data_In => MEM_Data_In,
-			C_type => MEM_C_type,
-			LW_Done => MEM_LW_Done,
-			SW_Done => MEM_SW_Done,
-			Data_Out => MEM_Data_Out,
-			Blk_Out => MEM_Blk_Out);
-			
-			
+			Data_reg => CPU_Data_reg); 
 
   
   
