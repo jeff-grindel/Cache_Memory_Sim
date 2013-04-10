@@ -36,7 +36,7 @@ begin
 				DAddr<=x"00000076"; --100 + $12
 				R_W<="0";
 				Data<="1";
-				Data_reg<=x"33333333";
+				Data_reg<=x"00000019";
 			elsif (OPC = x"016A9020") then --Add
 				ALU_DONE<="1";
 				DAddr<=x"00000000";
