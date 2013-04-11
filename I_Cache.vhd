@@ -39,7 +39,7 @@ begin
 	temp <= mem_blk;
 		if(IHC = "1") then 
 			--Simulation of a I-Cache hit, Init OPC to already be in the cache
-			I_Cache(lw_addr) <= x"857100C8";
+			I_Cache(lw_addr) <= x"8D7100C8";
 			I_Cache(sw_addr) <= x"AD930064";
 			I_Cache(add_addr) <= x"016A9020";
 			I_Cache(beq_addr) <= x"12AE0178";
@@ -62,6 +62,7 @@ begin
 	
 	--Output The opcode
 	I_Cache_Data <= I_Cache(to_integer(unsigned(IAddr)) mod 64) after cycle_time when (IHC = "1") else	--If hit 
-					I_Cache(to_integer(unsigned(IAddr)) mod 64) after cycle_time when (IHC = "0" and Blk_In(255) /= 'U');
+					--I_Cache(to_integer(unsigned(IAddr)) mod 64) after cycle_time when (IHC = "0" and Blk_In(255) /= 'U');
+					Blk_In(255 downto 224) after cycle_time when (IHC = "0" and Blk_In(255) /= 'U');
 	
 end architecture behave;

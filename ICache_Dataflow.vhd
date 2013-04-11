@@ -6,19 +6,18 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 
-entity iSystem is
-  port (
-	aIAddr : in std_logic_vector(31 downto 0);
-	aIHC : in std_logic_vector(0 downto 0); --I-Cahche hit flag 1: Hit 0: Miss
-	aALU_DONE: out std_logic_vector (0 downto 0); 
-	aR_W: out std_logic_vector (0 downto 0); 
-	aDAddr: out std_logic_vector (31 downto 0);    
-	aData: out std_logic_vector (0 downto 0); 
-	aData_reg: out std_logic_vector (31 downto 0);
-	aReg_Num: out std_logic_vector (5 downto 0)); --5 bit register number
-end iSystem;
+entity ICache_Dataflow is
+  port (aIAddr : in std_logic_vector(31 downto 0);
+		aIHC : in std_logic_vector(0 downto 0); --I-Cahche hit flag 1: Hit 0: Miss
+		aALU_DONE: out std_logic_vector (0 downto 0); 
+		aR_W: out std_logic_vector (0 downto 0); 
+		aDAddr: out std_logic_vector (31 downto 0);    
+		aData: out std_logic_vector (0 downto 0); 
+		aData_reg: out std_logic_vector (31 downto 0);
+		aReg_Num: out std_logic_vector (4 downto 0)); --5 bit register number
+end ICache_Dataflow;
 
-architecture behave of iSystem is 
+architecture behave of ICache_Dataflow is 
 
 COMPONENT I_Cache is
    port (IAddr : in std_logic_vector; -- 0x0 - 0x40
@@ -55,7 +54,7 @@ COMPONENT CPU is
    DAddr: out std_logic_vector (31 downto 0); --2 bit Instruction type flag (0==Load) (1==Store) (2==Alu)
    Data: out std_logic_vector (0 downto 0); --2 bit Instruction type flag (0==Load) (1==Store) (2==Alu)
    Data_reg: out std_logic_vector (31 downto 0); --2 bit Instruction type flag (0==Load) (1==Store) (2==Alu)
-   Reg_Num: out std_logic_vector (5 downto 0)); --5 bit register number
+   Reg_Num: out std_logic_vector (4 downto 0)); --5 bit register number
 
 end COMPONENT;
 
@@ -82,7 +81,7 @@ end COMPONENT;
 --Declaration of Inputs
 signal ICACHE_I_IAddr : std_logic_vector (7 downto 0);
 signal ICACHE_I_IHC : std_logic_vector(0 downto 0); --I-Cahche hit flag	
-signal ICACHE_I_Blk_In: std_logic_vector(255 downto 0); --1 for read, 0 for write
+signal ICACHE_I_Blk_In: std_logic_vector(255 downto 0);
 --Declaration of Outputs	
 signal ICACHE_I_I_Cache_Data: std_logic_vector(31 downto 0);
 ------------------------------------------------Second Cache Signals------------------------------------------------------
@@ -122,35 +121,62 @@ signal CPU_DAddr:  std_logic_vector (31 downto 0);
 signal CPU_Data:  std_logic_vector (0 downto 0); 
 signal CPU_Data_reg: std_logic_vector (31 downto 0);
 
-			
+signal T_Addr_Out : std_logic_vector(31 downto 0);
+signal T_Data_out : std_logic_vector(31 downto 0);			
+signal T_Data_out2 : std_logic_vector(31 downto 0);			
+signal T_Data_out3 : std_logic_vector(31 downto 0);			
+signal T_Data_out4 : std_logic_vector(31 downto 0);			
+signal T_Blk_Out2 : std_logic_vector(255 downto 0);
+
 begin
 	i_cache_1: I_Cache PORT MAP (
 			IAddr=>aIAddr,
 			IHC =>aIHC,
-			Blk_In =>ICACHE_I_Blk_In, --in (Undriven for first cache)
-			I_Cache_Data =>ICACHE_I_I_Cache_Data);
-			
+			Blk_In =>T_Blk_Out2, --in (Undriven for first cache)
+			I_Cache_Data =>T_Data_out);
+		
+	Bus_1 : Bus_Model port map (Addr => aIAddr,
+							IHC => aIHC,
+							DHC =>  "U",
+							R_W =>  "U",
+							C_Type => "0",
+							Data_In => T_Data_out,
+							Blk_In =>  MEM_Blk_Out,
+							Addr_Out =>T_Addr_Out,
+							Data_Out =>  T_Data_Out2);
+		
 	mem: Memory PORT MAP (
 			Addr => aIAddr,--in
 			IHC => aIHC,   --in
-			DHC => MEM_DHC,        --in (Undriven for Instruction flow)    
-			R_W => MEM_R_W,        --in (Undriven for Instruction flow)   
-			Data_In => ICACHE_I_I_Cache_Data,--in
-			C_type => "1",  --in   (instruction)
-			LW_Done => MEM_LW_Done,   --(Undriven for Instruction flow)   
-			SW_Done => MEM_SW_Done,   --(Undriven for Instruction flow) 
-			Data_Out => MEM_Data_Out, --(Undriven for Instruction flow) 
+			DHC => "U",        --in (Undriven for Instruction flow)    
+			R_W => "U",        --in (Undriven for Instruction flow)   
+			Data_In => T_Data_Out2,--in
+			C_type => "0",  --in   (instruction)
+			--LW_Done => "0",   --(Undriven for Instruction flow)   
+			--SW_Done => "0",   --(Undriven for Instruction flow) 
+			Data_Out => T_Data_out3, --(Undriven for Instruction flow) 
 			Blk_Out => MEM_Blk_Out);
 
-	i_cache_2: I_Cache PORT MAP (
-			IAddr=>aIAddr,--in
-			IHC => aIHC,--in
-			Blk_In => MEM_Blk_Out,--in
-			I_Cache_Data =>ICACHE_II_Cache_Data);
+	Bus_2 : Bus_Model port map (Addr => aIAddr,
+						IHC => aIHC,
+						DHC =>  "U",
+						R_W =>  "U",
+						C_Type => "0",
+						Data_In => T_Data_out3,
+						Blk_In =>  MEM_Blk_Out,
+						Addr_Out =>T_Addr_Out,
+						Data_Out =>  T_Data_Out4,
+						Blk_Out => T_Blk_Out2);		
+			
+	-- i_cache_2: I_Cache PORT MAP (
+			-- IAddr=>aIAddr,--in
+			-- IHC => aIHC,--in
+			-- Blk_In => MEM_Blk_Out,--in
+			-- I_Cache_Data =>ICACHE_II_Cache_Data);
 			
 	mux: Mux2_32 PORT MAP (
-			ZERO => MEM_Data_Out, --in
-			ONE => ICACHE_II_Cache_Data,--in
+			ZERO => T_Data_out, --in
+			ONE => T_Data_Out4,--in
 			CTRL => aIHC,--in
 			OUTPUT => MUX_OUTPUT);
 			

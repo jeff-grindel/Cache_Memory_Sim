@@ -8,7 +8,7 @@ end entity;
 
 architecture behave of DCache_Dataflow_Test  is
 
---declaration of the Behaviral Encoder
+--declaration of the Behaviral 
 COMPONENT DCache_Dataflow is
 	port (aDAddr : in std_logic_vector (31 downto 0);
 		  aData : in std_logic_vector (31 downto 0);

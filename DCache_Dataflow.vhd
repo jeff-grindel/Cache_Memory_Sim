@@ -129,7 +129,7 @@ Bus_2 : Bus_Model port map (Addr => aDAddr,
 							Blk_Out => T_Blk_Out2);
 
 Mux_32 : Mux22_32 port map (ZERO => 	T_Data_Out,
-						   ONE => T_Data_Out3,
+						   ONE => T_Data_Out4,
 						   CTRL1 => aDHC,
 						   CTRL2 => aR_W,
 						   OUTPUT => aOut);
