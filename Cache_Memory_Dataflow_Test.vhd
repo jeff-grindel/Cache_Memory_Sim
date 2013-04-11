@@ -40,27 +40,27 @@ begin
 			
 	aAddr_Gen : process 
 	begin
-		TB_aIAddr <= --x"00000200" after 0 ns;
-					 -- x"00000288" after 0 ns;
-					-- x"00000010" after 0 ns;
-					-- x"00000018" after 0 ns;
-					-- x"00000020" after 0 ns;
-					-- x"00000028" after 0 ns;
+		TB_aIAddr <= --x"00000200" after 0 ns;		--Load Address
+					  x"00000288" after 0 ns;		--Store Address
+					 --  x"00000010" after 0 ns;		--Add Address
+					-- x"00000018" after 0 ns;		--BEQ Address
+					-- x"00000020" after 0 ns;		--BNE Address
+					 -- x"00000028" after 0 ns;		--LUI Address
 					 
 	wait;
 	end process aAddr_Gen;
 	
 	aIHC_Gen : process 
 	begin
-		TB_aIHC <= "1" after 0 ns;
-				 --"0" after 0 ns;
+		TB_aIHC <= "1" after 0 ns;	--ICache Hit
+				 --"0" after 0 ns;	--ICache Miss
 	wait;
 	end process aIHC_Gen;
 	
 	aDHC_Gen : process 
 	begin
-		TB_aDHC <= "1" after 0 ns;
-				 --"0" after 0 ns;
+		TB_aDHC <= --"1" after 0 ns;	--DCache Hit
+				 "0" after 0 ns;	--DCache Miss
 	wait;
 	end process aDHC_Gen;
 	

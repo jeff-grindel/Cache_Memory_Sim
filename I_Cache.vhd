@@ -33,7 +33,7 @@ architecture behave of I_Cache is
 	constant cycle_time : time := 10 ns;
 	
 begin 
-	ICache_Proc :process  (IAddr, IHC)
+	ICache_Proc :process  (IAddr, IHC, Blk_In)
 	begin	
 	mem_blk := to_integer(unsigned(IAddr)) mod 64;
 	temp <= mem_blk;
@@ -62,7 +62,7 @@ begin
 	
 	--Output The opcode
 	I_Cache_Data <= I_Cache(to_integer(unsigned(IAddr)) mod 64) after cycle_time when (IHC = "1") else	--If hit 
-					--I_Cache(to_integer(unsigned(IAddr)) mod 64) after cycle_time when (IHC = "0" and Blk_In(255) /= 'U');
-					Blk_In(255 downto 224) after cycle_time when (IHC = "0" and Blk_In(255) /= 'U');
+					I_Cache(to_integer(unsigned(IAddr)) mod 64) after cycle_time when (IHC = "0" and Blk_In(255) /= 'U');
+					--Blk_In(255 downto 224) after cycle_time when (IHC = "0" and Blk_In(255) /= 'U');
 	
 end architecture behave;
