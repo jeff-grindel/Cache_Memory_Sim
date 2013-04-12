@@ -1,5 +1,4 @@
 --CPU: 
---Access time: 1 cycle
 
 library ieee;
 use ieee.std_logic_1164.all;

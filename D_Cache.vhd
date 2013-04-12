@@ -1,4 +1,4 @@
---D_Cache: 256 Bytes (Word Aaddressable)
+--D_Cache: 128 Bytes (Word Aaddressable)
 --Access time: 1 cycle
 
 library ieee;
@@ -18,7 +18,7 @@ entity D_Cache is
 end entity D_Cache;
 
 architecture behave of D_Cache is 
-	--initialaztion of a memory array of 256 byte (word addressable 32bit data 
+	--initialaztion of a memory array of 128 byte (word addressable 32bit data 
 	type array_type is array (0 to 31) of std_logic_vector(31 downto 0);
 	signal D_Cache : array_type := ((others => (others=>'0')));	--Initialize everything to 0
 	shared variable mem_blk : natural;
